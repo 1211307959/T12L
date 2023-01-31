@@ -39,7 +39,7 @@
 ### Yuvan
 
 1. generating game board
-2. game settings for number of rows and collumns
+2. game settings for number of rows and columns
 3. layout
 
 ### Arnalin
