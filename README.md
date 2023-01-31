@@ -1,23 +1,21 @@
 # Alien vs. Zombie
 
 Please introduce the game here.
-Alien 
+Alien vs Zombie is a game where you as an alien need to kill zombie in order to win the game.
 
 Please provide the YouTube link to your [Video Demo](https://youtube.com).
 
 ## Compilation Instructions
 
-Provide instructions on how to compile your program, especially when it is non-trivial.
-
-For example:
-
-```
-g++ main.cpp folder1\code.cpp folder2\code.cpp ......
-```
+1. Compile the "part1.cpp" file by run the code "g++ part1.cpp" into the VScode.
+2. Run ".\a".
 
 ## User Manual
 
 Please provide the user manual on how to use your program.
+1. run the code
+2. there is option to change the game setting
+3. use command(can only use help and quit for now)
 
 Please DO NOT change the Progress Log below. Leave it as it is.
 
