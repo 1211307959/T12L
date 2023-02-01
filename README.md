@@ -2,7 +2,7 @@
 
 Alien vs Zombie is a game where player as an alien need to kill zombie in order to win the game.
 
-Please provide the YouTube link to your [Video Demo](https://youtube.com).
+https://youtu.be/0GnRNyhR0ZM
 
 ## Compilation Instructions
 
