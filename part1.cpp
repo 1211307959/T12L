@@ -27,6 +27,7 @@ public:
     void init(int dimX, int dimY);
     void display() const;
     void gameSetting();
+    void healthDisplay();
 
     int getDimX() const;
     int getDimY() const;
@@ -136,6 +137,7 @@ public:
 class Zombie
 {
 public:
+    char id[9] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
     void spawn(Board &board, int count)
     {
         int mid_x = board.getDimX() / 2;
@@ -148,7 +150,7 @@ public:
                 x = rand() % board.getDimX();
                 y = rand() % board.getDimY();
             } while (x == mid_x && y == mid_y);
-            board.map_[y][x] = 'Z';
+            board.map_[y][x] = id[i];
         }
     }
 
@@ -163,11 +165,11 @@ void Board::gameSetting()
     bool odd = false;
 
     while (odd == false){
-    cout << "Enter new value for Row: ";
+    cout << "Enter new value for Row => ";
     cin >> newX;
-    cout << "Enter new value for Column: ";
+    cout << "Enter new value for Column => ";
     cin >> newY;
-    cout << "Enter number of zombies: ";
+    cout << "Enter number of zombies => ";
     cin >> count;
     if (newX % 2 == 0 || newY % 2 == 0)
     {
@@ -190,6 +192,27 @@ void Board::gameSetting()
         odd = true;
     }}
 }
+
+void Board::healthDisplay()
+{
+    int a_health = 100;
+    int a_damage = 0;
+    int z_health = 100 + (rand()% 201);
+    int z_damage = 1+ (rand()% 15);
+    int range    = 1+ rand() %3;
+    
+
+    cout << "-> Alien :  Life "<< a_health ;
+    cout <<", " <<"Attack " << a_damage<< endl ;
+    cout << "   Zombie 1 :  Life "<< z_health ;
+    cout << ", " <<"Attack " << z_damage<< ',';
+    cout << " Range  "<< range<<endl;
+    cout << "   Zombie 2 :  Life "<< z_health ;
+    cout << ", " <<"Attack " << z_damage<< ',';
+    cout << " Range  "<< range<< endl ;
+   
+}
+
     void getHelp()
     {
         cout << "1. w - move up" << endl;
@@ -257,13 +280,14 @@ void Board::gameSetting()
 }
 void test1_1()
 {
-        int count = 1;
+        int count = 2;  //default zombie count
         Board board;
         Alien alien;
         Zombie zombie;
         alien.spawn(board);
         zombie.spawn(board, count);
         board.display();
+        board.healthDisplay();
 }
 
 void mainPage()
@@ -276,23 +300,27 @@ void mainPage()
 
     cout << "Row = " << board.getDimX() << endl;
     cout << "Column = " << board.getDimY() << endl;
-    cout << "Zombie = 1" << endl << endl;
+    cout << "Zombie = 2" << endl << endl;
 
     string choice;
-    // Make your choice to start a game
-    cout << "Would you like to change the game setting?(y/n)  => ";
-    cin >> choice;
-    if (choice == "y")
-    {
-        board.gameSetting();
-        board.display();
-    }
-    if (choice == "n")
-    {
-        cout << "Default setting Mantained" << endl << endl;
-        //system("pause");
-        test1_1();
-    }
+    bool onlyChoice = false;
+    
+    while(onlyChoice == false){
+        // Make your choice to start a game
+        cout << "Would you like to change the game setting?(y/n)  => ";
+        cin >> choice;
+        if (choice == "Y"|| choice == "y")
+        {
+            board.gameSetting();
+            board.display();
+            onlyChoice = true;
+        } else if (choice == "N"||choice == "n") {
+            cout << "Default setting Mantained" << endl << endl;
+            //system("pause");
+            test1_1();
+            onlyChoice = true;
+        }
+    }    
 }
 int main() {
     srand(1); // use this for fixed map during testing
